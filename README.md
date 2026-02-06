@@ -2,9 +2,9 @@
 
 * RPi in remote location
 * USB drive attached to RPi
-* RPi storage has options:
-    *  main partition: unencrypted, used to open `sshd`
-    *  second partition or usb stick: encrypted, tiny; stores credentials for Wireguard and restic; prevents loss of data in case of device loss
+* RPi storage:
+    *  **main partition**: unencrypted, used to open `sshd`
+    *  **second partition** or **usb stick**: encrypted, tiny; stores credentials for Wireguard and restic; prevents loss of data in case of device loss
 * Register external IP address with some DynDNS service, forward SSH to Pi; disable password login
 
 # Process
