@@ -5,7 +5,7 @@
 * RPi storage:
     *  **main partition**: unencrypted, used to open `sshd`
     *  **second partition** or **usb stick**: encrypted, tiny; stores credentials for Wireguard and restic; prevents loss of data in case of device loss
-* Register external IP address with some DynDNS service, forward SSH to Pi; disable password login
+* Register external IP address with some DynDNS service, forward SSH to Pi; disable password login; **especially** necessary because adversaries could change the DynDNS entry using the password that **must** be in cleartext on the disk. If yo use password login, they could intercept that.
 
 # Process
 
@@ -36,6 +36,27 @@ sudo apt install cryptsetup
 see also https://github.com/Momro/restic-backup
 
 Change RESTIC_REPOSITORY to backup disk, see below
+
+## ddclient
+
+for dyndns, requires Docker:
+
+```
+apt install docker.io docker-compose -y
+cd
+mkdir docker
+mkdir docker/ddclient
+mkdir docker/ddclient/config
+cd docker/ddclient/config
+touch ddclient.conf
+<insert config for your provider>
+cd ~/docker/ddclient
+touch docker-compose.yaml
+<edit docker compose file>
+
+```
+
+
 
 # encrypt partition/stick
 
