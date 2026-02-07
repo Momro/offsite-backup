@@ -5,11 +5,11 @@
 * RPi auto-connects to Wireguard in internal Guest-VLAN
 * Backup-VM connects to RPi that is in the internal guest-VLAN via SFTP in restic and writes backup to USB drive
 
-[check] no passwords stored on remote Pi -> no credential theft possible
-[check] backup is encrypted
-[check] RPi is not in a critical network with access to crucial information/systems
-[check] RPi has no access to internal storage
-[check] does not rely on dyndns and port forwarding by remote, uncontrollable firewall
+- [x] no passwords stored on remote Pi -> no credential theft possible
+- [x] backup is encrypted
+- [x] RPi is not in a critical network with access to crucial information/systems
+- [x] RPi has no access to internal storage
+- [x] does not rely on dyndns and port forwarding by remote, uncontrollable firewall
 
 # Process
 
