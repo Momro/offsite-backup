@@ -1,19 +1,22 @@
 # Concept
 
-* RPi in remote location
-* USB drive attached to RPi
-* RPi storage:
-    *  **main partition**: unencrypted, used to open `sshd`
-    *  **second partition** or **usb stick**: encrypted, tiny; stores credentials for Wireguard and restic; prevents loss of data in case of device loss
-* Register external IP address with some DynDNS service, forward SSH to Pi; disable password login; **especially** necessary because adversaries could change the DynDNS entry using the password that **must** be in cleartext on the disk. If yo use password login, they could intercept that.
+* RPi in remote location, storage can be unencrypted
+* USB drive attached to RPi that will host the restic encrypted back
+* RPi auto-connects to Wireguard in internal Guest-VLAN
+* Backup-VM connects to RPi that is in the internal guest-VLAN via SFTP in restic and writes backup to USB drive
+
+[check] no passwords stored on remote Pi -> no credential theft possible
+[check] backup is encrypted
+[check] RPi is not in a critical network with access to crucial information/systems
+[check] RPi has no access to internal storage
+[check] does not rely on dyndns and port forwarding by remote, uncontrollable firewall
 
 # Process
 
 * start RPi
-* connect via SSH, decrypt second partition/usb stick
-* connect back via decrypted Wireguard config/credentials
-* mount smb drives via decrypted credential files
-* perform backup via restic
+* mount USB drive
+* connect RPi to guest-wireguard
+* perform backup via sftp-restic from internal backup machine
 
 # Hardware
 
