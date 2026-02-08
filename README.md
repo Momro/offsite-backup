@@ -1,15 +1,29 @@
 # Concept
 
+- [x] no passwords stored on remote Pi -> no credential theft possible
+- [x] backup is encrypted
+- [x] RPi is not in a critical network with access to crucial information/systems
+- [x] RPi has no access to internal storage
+
+## the no-brainer that works everywhere
+
 * RPi in remote location, storage can be unencrypted
 * USB drive attached to RPi that will host the restic encrypted back
 * RPi auto-connects to Wireguard in internal Guest-VLAN
 * Backup-VM connects to RPi that is in the internal guest-VLAN via SFTP in restic and writes backup to USB drive
 
-- [x] no passwords stored on remote Pi -> no credential theft possible
-- [x] backup is encrypted
-- [x] RPi is not in a critical network with access to crucial information/systems
-- [x] RPi has no access to internal storage
 - [x] does not rely on dyndns and port forwarding by remote, uncontrollable firewall
+
+## the easy one with a bit of setup
+
+* RPi in remote location, storage unencrypted
+* USB drive attached to RPi that will host the restic encrypted back
+* Port-forward 22 to RPi in remote firewall
+* DynDNS update by RPi
+* Backup-VM connects to RPi via SFTP in restic and writes backup to USB drive
+
+- [x] does not rely on additional wireguard
+- [x] does not require guest-VLAN
 
 # Process
 
