@@ -93,6 +93,8 @@ sudo mount /dev/mapper/secretsDrive /media/cryptostorage
 ## original/remote folder
 
 ```
+apt install cifs-utils
+
 $ sudo mount -t cifs //<ip address>/<remote share> /mnt/original/<remote share> \
   -o credentials=/root/smbcred/original/<remote share>,uid=1000,gid=1000,\
 file_mode=0775,dir_mode=0775,noperm,forceuid,forcegid,vers=3.0
